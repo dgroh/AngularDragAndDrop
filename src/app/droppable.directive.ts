@@ -17,10 +17,9 @@ export class DroppableDirective {
 
     dropzone.appendChild(droppedElement);
 
-    const svgPoint = this.svgService.getSVGPoint(event, droppedElement);
-
     droppedElement.setAttribute('draggable', true);
 
+    const svgPoint = this.svgService.getSVGPoint(event, droppedElement);
     droppedElement.setAttribute('cx', svgPoint.x);
     droppedElement.setAttribute('cy', svgPoint.y);
   }
