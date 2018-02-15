@@ -15,6 +15,5 @@ export class DraggableDirective {
   @HostListener('document:dragover', ['$event'])
   onDragOver(event) {
       event.preventDefault();
-      event.stopPropagation();
   }
 }
