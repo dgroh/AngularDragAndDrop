@@ -17,6 +17,8 @@ export class DroppableDirective {
       .getElementById(droppedElementId)
       .cloneNode(true) as any;
 
+    droppedElement.removeAttribute('id');
+
     dropzone.appendChild(droppedElement);
 
     const svgPoint = this.svgService.getSVGPoint(event, droppedElement);
