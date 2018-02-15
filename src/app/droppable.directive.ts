@@ -4,12 +4,13 @@ import {
   HostBinding,
   ElementRef
 } from '@angular/core';
+import { SVGService } from './svg.service';
 
 @Directive({
   selector: '[appDroppable]'
 })
 export class DroppableDirective {
-  constructor(private el: ElementRef) {}
+  constructor(private svgService: SVGService) {}
 
   @HostListener('drop', ['$event'])
   onDrop(event) {
@@ -18,20 +19,10 @@ export class DroppableDirective {
     const droppedElement = document.getElementById(droppedElementId).cloneNode(true) as any;
 
     dropzone.appendChild(droppedElement);
-  }
 
-  @HostListener('dragover', ['$event'])
-  onDragOver(event) {
+    const svgPoint = this.svgService.getSVGPoint(event, droppedElement);
 
-  }
-
-  @HostListener('dragleave', ['$event'])
-  onDragLeave(event) {
-
-  }
-
-  @HostListener('mouseleave', ['$event'])
-  onMouseLeave(event) {
-
+    droppedElement.setAttribute('cx', svgPoint.x);
+    droppedElement.setAttribute('cy', svgPoint.y);
   }
 }

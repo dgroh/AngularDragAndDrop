@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { DraggableDirective } from './draggable.directive';
 import { DroppableDirective } from './droppable.directive';
+import { SVGService } from './svg.service';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,7 @@ import { DroppableDirective } from './droppable.directive';
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [SVGService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
