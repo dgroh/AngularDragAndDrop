@@ -20,16 +20,14 @@ export class DroppableDirective {
     droppedElement.setAttribute('draggable', true);
 
     const svgPoint = this.svgService.getSVGPoint(event, droppedElement);
-    droppedElement.setAttribute('cx', svgPoint.x);
-    droppedElement.setAttribute('cy', svgPoint.y);
+    this.setPosition(droppedElement, { x: svgPoint.x, y: svgPoint.y  });
   }
 
   @HostListener('mousemove', ['$event'])
   onMouseMove(event): void {
     if (this.draggingElement) {
       const svgPoint = this.svgService.getSVGPoint(event, this.draggingElement);
-      this.draggingElement.setAttribute('cx', svgPoint.x);
-      this.draggingElement.setAttribute('cy', svgPoint.y);
+      this.setPosition(this.draggingElement, { x: svgPoint.x, y: svgPoint.y  });
     }
   }
 
@@ -48,5 +46,10 @@ export class DroppableDirective {
   @HostListener('mouseleave', ['$event'])
   onMouseLeave(event): void {
     this.draggingElement = null;
+  }
+
+  private setPosition(element, coord: { x, y }) {
+    element.setAttribute('cx', coord.x);
+    element.setAttribute('cy', coord.y);
   }
 }
