@@ -11,7 +11,7 @@ export class DroppableDirective {
 
   @HostListener('drop', ['$event'])
   onDrop(event) {
-    const dropzone = event.target;
+    const dropzone = event.target.childNodes[0];
     const droppedElementId = event.dataTransfer.getData('text');
     const droppedElement = document.getElementById(droppedElementId).cloneNode(true) as any;
 
