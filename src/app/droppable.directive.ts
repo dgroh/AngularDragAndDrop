@@ -13,7 +13,7 @@ export class DroppableDirective {
   onDrop(event) {
     const dropzone = event.target;
     const droppedElementId = event.dataTransfer.getData('text');
-    const droppedElement = document.getElementById(droppedElementId) as any;
+    const droppedElement = document.getElementById(droppedElementId).cloneNode(true) as any;
 
     dropzone.appendChild(droppedElement);
 
