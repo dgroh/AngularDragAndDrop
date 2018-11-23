@@ -7,7 +7,8 @@ import { SVGService } from './svg.service';
 export class DroppableDirective {
   private draggingElement: any;
 
-  constructor(private svgService: SVGService) {}
+  constructor(private svgService: SVGService) {
+  }
 
   @HostListener('drop', ['$event'])
   onDrop(event) {

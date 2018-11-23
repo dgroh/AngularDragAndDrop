@@ -1,8 +1,23 @@
 import { Injectable } from '@angular/core';
+import * as SvgPanZoom from 'svg-pan-zoom';
+
+const svgPanZoom = SvgPanZoom;
 
 @Injectable()
 export class SVGService {
+  private panZoomInstance: any;
+
   constructor() {}
+
+  initializePanZoom() {
+    this.panZoomInstance = svgPanZoom('#dropzone', {
+      zoomEnabled: true,
+      controlIconsEnabled: true,
+      fit: false,
+      center: true,
+      minZoom: 0.1
+    });
+  }
 
   getSVGPoint(event, element): SVGPoint {
     // get the mouse coordinates and set them to the SVG point

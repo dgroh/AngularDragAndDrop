@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import * as SvgPanZoom from 'svg-pan-zoom';
-
-const svgPanZoom = SvgPanZoom;
+import { SVGService } from './svg.service';
 
 @Component({
   selector: 'app-root',
@@ -9,16 +7,10 @@ const svgPanZoom = SvgPanZoom;
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  constructor() {
+  constructor(private svgService: SVGService) {
   }
 
   ngOnInit(): void {
-    svgPanZoom('#dropzone', {
-      zoomEnabled: true,
-      controlIconsEnabled: true,
-      fit: false,
-      center: true,
-      minZoom: 0.1
-    });
+    this.svgService.initializePanZoom();
   }
 }
